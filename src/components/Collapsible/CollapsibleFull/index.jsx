@@ -72,7 +72,7 @@ const StyledCardBtnChevronBas = styled.span`
   width: 23.86px;
   height: 14.06px;
   content: url(${ChevronBas});
-  margin-right: 12px;
+  margin-right: 32.61px;
   @media only screen and (max-width: 768px) {
     width: 15.2px;
     height: 8.96px;

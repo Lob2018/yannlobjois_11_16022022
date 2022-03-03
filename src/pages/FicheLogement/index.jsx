@@ -20,6 +20,7 @@ const StyledTitleSection = styled.section`
 
 const StyledTitle = styled.div`
   max-width: 70%;
+  width: 70%;
   margin-bottom: 5px;
   h1 {
     max-width: 100%;
@@ -107,6 +108,18 @@ const StyledOwnerPicture = styled.img`
   }
 `
 
+const StyledDescriptionEquipments = styled.section`
+  display: flex;
+  flex-direction: row;
+  gap: 76px;
+  margin: 24px 0;
+  @media only screen and (max-width: 768px) {
+    margin: 16.5px 0 44.5px 0;
+    flex-direction: column;
+    gap: 0px;
+  }
+`
+
 function FicheLogement() {
   const { id } = useParams()
 
@@ -120,7 +133,7 @@ function FicheLogement() {
     <Navigate to="/*" replace={true} />
   ) : (
     <main>
-      {/* <BannerCarousel pictures={Logements[position].pictures}></BannerCarousel> */}
+      <BannerCarousel pictures={Logements[position].pictures}></BannerCarousel>
 
       <StyledTitleSection aria-roledescription="the accomodations's title, owner's name with his photo, location, tags and ratings">
         {Logements[position].title && Logements[position].location ? (
@@ -145,14 +158,14 @@ function FicheLogement() {
         <Tags tags={Logements[position].tags}></Tags>
         <Rating value={Logements[position].rating}></Rating>
       </StyledTitleSection>
-      <section aria-roledescription="the accomodations's description and equipments">
+      <StyledDescriptionEquipments aria-roledescription="the accomodations's description and equipments">
         <CollapsibleHalf title="Description">
           {Logements[position].description}
         </CollapsibleHalf>
         <CollapsibleHalf title="Équipements">
           {Logements[position].equipments.join('\n')}
         </CollapsibleHalf>
-      </section>
+      </StyledDescriptionEquipments>
     </main>
   )
 }

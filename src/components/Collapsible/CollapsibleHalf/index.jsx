@@ -6,11 +6,12 @@ import ChevronHaut from '../../../assets/chevron-haut.svg'
 import ChevronBas from '../../../assets/chevron-bas.svg'
 
 const StyledCollapsibleHalf = styled.div`
+  box-sizing: border-box;
   white-space: pre-line;
-
   width: 46.93%;
   @media only screen and (max-width: 768px) {
     width: 100%;
+    margin-bottom: 20px;
   }
 `
 const StyledCollapsibleButton = styled.div`

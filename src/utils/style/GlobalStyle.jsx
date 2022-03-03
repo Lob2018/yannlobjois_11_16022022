@@ -8,7 +8,7 @@ const StyledGlobalStyle = createGlobalStyle`
       a:link,a:visited,a:hover,a:active{
         color: ${colors.primary};
       }           
-    }
+    }    
     body {
       margin: 0;
       background-color: ${colors.bg};

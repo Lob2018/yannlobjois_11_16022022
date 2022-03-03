@@ -8,9 +8,9 @@ const AProposContainer = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
-  margin: 63px 0;
+  margin: 63px 0 201px 0;
   @media only screen and (max-width: 768px) {
-    margin: 16px 0;
+    margin: 16px 0 168px 0;
   }
 `
 

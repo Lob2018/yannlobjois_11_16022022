@@ -1,133 +1,183 @@
 import styled from 'styled-components'
 import PropTypes from 'prop-types'
+import { useState } from 'react'
 
-import DeskMontagnes from '../../../assets/pictures/desk-lac.jpg'
-import MobMontagnes from '../../../assets/pictures/mob-lac.jpg'
 import ChevronGauche from '../../../assets/chevron-gauche.svg'
 import ChevronDroit from '../../../assets/chevron-droit.svg'
 
-const StyledContainerImage = styled.div`
+const StyledCarouselContainer = styled.section`
+  margin-top: 20px;
+  @media only screen and (max-width: 768px) {
+    margin-top: 27px;
+  }
+`
+
+const StyledCarouselInner = styled.div`
+  position: relative;
+  @media only screen and (max-width: 768px) {
+  }
+`
+const StyledPreviousButton = styled.button`
+  cursor: pointer;
+  padding: 0;
+  position: absolute;
+  z-index: 1;
+  border: none;
+  outline: none;
+  width: 46.68px;
+  height: 79.2px;
+  left: 23.36px;
+  top: calc(50% - 40px);
+  background-color: transparent;
+  background-image: url(${ChevronGauche});
+  background-size: 46.68px 79.2px;
+  @media only screen and (max-width: 768px) {
+    left: 5.84px;
+    top: calc(50% - 10px);
+    background-size: 11.67px 19.8px;
+    width: 11.67px;
+    height: 19.8px;
+  }
+`
+
+const StyledNextButton = styled.button`
+  cursor: pointer;
+  padding: 0;
+  position: absolute;
+  z-index: 1;
+  border: none;
+  outline: none;
+  width: 46.68px;
+  height: 79.2px;
+  right: calc(0% + 23.36px);
+  top: calc(50% - 40px);
+  background-color: transparent;
+  background-image: url(${ChevronDroit});
+  background-size: 46.68px 79.2px;
+  @media only screen and (max-width: 768px) {
+    right: calc(0% + 5.94px);
+    top: calc(50% - 10px);
+    background-size: 11.67px 19.8px;
+    width: 11.67px;
+    height: 19.8px;
+  }
+`
+
+const StyledCarouselItem = styled.div`
   box-sizing: border-box;
   position: relative;
-  text-align: center;
-  height: 223px;
+  max-height: 415px;
+  min-height: 415px;
   width: 100%;
-  background-color: #f7f7f7;
+  overflow: hidden;
   border-radius: 25px;
+  margin-bottom: 30px;
   @media only screen and (max-width: 768px) {
-    height: 111px;
+    max-height: 255px;
+    min-height: 255px;
     border-radius: 10px;
-  }
-`
-const StyledTitle = styled.h1`
-  box-sizing: border-box;
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  margin: 0;
-  padding: 0 20px;
-  color: #fff;
-  font-weight: 500;
-  line-height: 68.45px;
-  font-size: 48px;
-  transform: translate(-50%, -50%);
-  width: 100%;
-  border-radius: 25px;
-  @media only screen and (max-width: 768px) {
-    text-align: left;
-    font-size: 24px;
-    line-height: 24px;
-    max-width: 70%;
-    padding: 0 0 0 16px;
-    left: 0px;
-    transform: translate(0%, -50%);
+    margin-bottom: 15px;
   }
 `
 
-const StyledBgBlend = styled.div`
+const StyledPicture = styled.img`
   box-sizing: border-box;
   position: absolute;
-  top: 0%;
-  left: 0%;
-  height: 223px;
   width: 100%;
-  background-color: #000;
-  opacity: 0.3;
-  mix-blend-mode: darken;
+  height: 100%;
+  min-height: 415px;
   border-radius: 25px;
-  @media only screen and (max-width: 768px) {
-    height: 111px;
-    border-radius: 10px;
-  }
-`
-
-const StyledImage = styled.img`
-  box-sizing: border-box;
+  display: inline-block;
   object-fit: cover;
-  content: url(${DeskMontagnes});
-  position: absolute;
-  top: 0%;
-  left: 0%;
-  height: 223px;
-  width: 100%;
-  border-radius: 25px;
   @media only screen and (max-width: 768px) {
-    height: 111px;
-    content: url(${MobMontagnes});
+    min-height: 255px;
     border-radius: 10px;
+  }
+`
+const StyledCarouselCaption = styled.div`
+  box-sizing: border-box;
+  position: absolute;
+  bottom: 0%;
+  width: 100%;
+  text-align: center;
+  p {
+    margin: 0 0 24.93px 0;
+    font-weight: 500;
+    color: white;
+    line-height: 25px;
+  }
+  @media only screen and (max-width: 768px) {
+    display: none;
   }
 `
 
 function BannerCarousel(props) {
   const pictures = props.pictures
+  const size = pictures.length
+  const [activeIndex, setPosition] = useState(0)
+
+  const updateIndex = (askedIndex) => {
+    if (askedIndex < 0) {
+      setPosition(size - 1)
+    } else if (askedIndex > size - 1) {
+      setPosition(0)
+    } else {
+      setPosition(askedIndex)
+    }
+  }
 
   return (
     <>
       {pictures && pictures.length > 0 && (
-        <section
+        <StyledCarouselContainer
           id="myBanner"
           aria-roledescription="carousel"
           aria-label="Highlighted television shows"
         >
-          <div className="carousel-inner">
-            <div className="controls">
-              <button
-                aria-controls="myBanner-items"
-                aria-label="Slide précédent"
-              >
-                Slide précédent
-                <svg>${ChevronGauche}</svg>
-              </button>
-              <button aria-controls="myBanner-items" aria-label="Slide suivant">
-                Slide suivant
-                <svg>${ChevronDroit}</svg>
-              </button>
-            </div>
+          <StyledCarouselInner>
+            {size === 1 ? null : (
+              <div>
+                <StyledPreviousButton
+                  type="button"
+                  aria-controls="myBanner-items"
+                  aria-label="Slide précédent"
+                  onClick={() => updateIndex(activeIndex - 1)}
+                ></StyledPreviousButton>
+                <StyledNextButton
+                  type="button"
+                  aria-controls="myBanner-items"
+                  aria-label="Slide suivant"
+                  onClick={() => updateIndex(activeIndex + 1)}
+                ></StyledNextButton>
+              </div>
+            )}
             <div id="myBanner-items" className="carousel-items" aria-live="off">
               {pictures.map((result, index) => (
-                <div
-                  className="carousel-item active" // active
+                <StyledCarouselItem
+                  className={index === activeIndex ? undefined : 'hidden'}
                   role="group"
                   aria-roledescription="slide"
-                  aria-label={`${index + 1} of ${pictures.length}"`}
+                  aria-label={`${index + 1} of ${pictures.length}`}
                   key={`index-pictures-${index}-${result}`}
                 >
                   <div className="carousel-image">
-                    <img
+                    <StyledPicture
                       src={result}
                       alt={result.substring(result.lastIndexOf('/') + 1)}
                     />
                   </div>
-                  <div className="carousel-caption">
-                    <p>
-                      {index + 1}/{pictures.length}
-                    </p>
-                  </div>
-                </div>
+                  {size === 1 ? null : (
+                    <StyledCarouselCaption className="carousel-caption">
+                      <p>
+                        {index + 1}/{pictures.length}
+                      </p>
+                    </StyledCarouselCaption>
+                  )}
+                </StyledCarouselItem>
               ))}
             </div>
-          </div>
-        </section>
+          </StyledCarouselInner>
+        </StyledCarouselContainer>
       )}
     </>
   )
@@ -142,9 +192,3 @@ BannerCarousel.defaultProps = {
 }
 
 export default BannerCarousel
-
-// <StyledContainerImage role="img">
-// <StyledImage alt="Mountainous landscape" />
-// <StyledBgBlend></StyledBgBlend>
-// <StyledTitle>Chez vous, partout et ailleurs</StyledTitle>
-// </StyledContainerImage>
