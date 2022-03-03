@@ -123,11 +123,8 @@ const StyledDescriptionEquipments = styled.section`
 function FicheLogement() {
   const { id } = useParams()
 
-  const position = Logements.findIndex((element) => {
-    if (element.id === id) {
-      return true
-    }
-  })
+  const equal = (element) => element.id === id
+  const position = Logements.findIndex(equal)
 
   return position === -1 ? (
     <Navigate to="/*" replace={true} />
