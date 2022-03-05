@@ -48,7 +48,7 @@ function BannerImage() {
   const { windowWidth } = useWindowWidth()
 
   return (
-    <StyledContainerImage role="img">
+    <StyledContainerImage>
       <StyledImage
         alt="Mountainous landscape"
         src={windowWidth > 768 ? DeskMontagnes : MobMontagnes}
