@@ -1,6 +1,8 @@
 import styled from 'styled-components'
-import DeskMontagnes from '../../../assets/pictures/desk-lac.jpg'
-import MobMontagnes from '../../../assets/pictures/mob-lac.jpg'
+import DeskLac from '../../../assets/pictures/desk-lac.jpg'
+import MobLac from '../../../assets/pictures/mob-lac.jpg'
+
+import { useWindowWidth } from '../../../utils/hooks'
 
 const StyledContainerImage = styled.div`
   box-sizing: border-box;
@@ -60,7 +62,6 @@ const StyledBgBlend = styled.div`
 const StyledImage = styled.img`
   box-sizing: border-box;
   object-fit: cover;
-  content: url(${DeskMontagnes});
   position: absolute;
   top: 0%;
   left: 0%;
@@ -69,15 +70,19 @@ const StyledImage = styled.img`
   border-radius: 25px;
   @media only screen and (max-width: 768px) {
     height: 111px;
-    content: url(${MobMontagnes});
     border-radius: 10px;
   }
 `
 
 function BannerImageTitre() {
+  const { windowWidth } = useWindowWidth()
+
   return (
     <StyledContainerImage role="img" aria-labelledby="image-1">
-      <StyledImage alt="Mountainous landscape" />
+      <StyledImage
+        alt="Mountainous landscape"
+        src={windowWidth > 768 ? DeskLac : MobLac}
+      />
       <StyledBgBlend></StyledBgBlend>
       <StyledTitle id="image-1">Chez vous, partout et ailleurs</StyledTitle>
     </StyledContainerImage>

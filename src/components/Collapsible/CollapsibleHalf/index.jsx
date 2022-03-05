@@ -129,7 +129,7 @@ function CollapsibleHalf(props) {
           onClick={() => setIsOpen(!isOpen)}
           onKeyUp={(e) => handleKeyUp(e)}
           role="button"
-          aria-controls="ID"
+          aria-controls={props.title}
           aria-expanded={!isOpen ? 'false' : 'true'}
           tabIndex="0"
         >
@@ -139,7 +139,7 @@ function CollapsibleHalf(props) {
 
         <StyledCardContentContainerHalf
           className={isOpen ? undefined : 'hidden'}
-          id="ID"
+          id={props.title}
           tabIndex="0"
         >
           <StyledCardContentTextHalf>
