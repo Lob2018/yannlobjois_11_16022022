@@ -33,6 +33,10 @@ Si le Collapse est ouvert, le clic de l'utilisateur permet de le fermer.
 
 [Kasa](https://lob2018.github.io/yannlobjois_11_16022022/)
 
+## Netlify
+
+[Kasa](https://kaza.netlify.app/)
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
