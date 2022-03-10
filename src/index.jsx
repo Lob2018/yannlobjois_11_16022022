@@ -1,6 +1,6 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
-import { BrowserRouter as Router, Route, Routes } from 'react-router-dom'
+import { BrowserRouter as HashRouter, Route, Routes } from 'react-router-dom'
 import GlobalStyle from './utils/style/GlobalStyle'
 
 import Header from './components/Header'
@@ -12,7 +12,7 @@ import QuatCentQuat from './pages/QuatCentQuat'
 
 ReactDOM.render(
   <React.StrictMode>
-    <Router>
+    <HashRouter basename="/yannlobjois_11_16022022/">
       <GlobalStyle />
       <Header />
       <Routes>
@@ -22,7 +22,7 @@ ReactDOM.render(
         <Route path="*" element={<QuatCentQuat />} />
       </Routes>
       <Footer />
-    </Router>
+    </HashRouter>
   </React.StrictMode>,
   document.getElementById('root')
 )
