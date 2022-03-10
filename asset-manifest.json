@@ -1,6 +1,6 @@
 {
   "files": {
-    "main.js": "/yannlobjois_11_16022022/static/js/main.6c60d2b8.js",
+    "main.js": "/yannlobjois_11_16022022/static/js/main.7a88b19e.js",
     "static/media/desk-montagnes.jpg": "/yannlobjois_11_16022022/static/media/desk-montagnes.5e30ecd5364ddd46499c.jpg",
     "static/media/desk-lac.jpg": "/yannlobjois_11_16022022/static/media/desk-lac.8dbc3e4ffb4f7b0b3bc8.jpg",
     "static/media/mob-montagnes.jpg": "/yannlobjois_11_16022022/static/media/mob-montagnes.d5a2f63c9ade7f0f6334.jpg",
@@ -14,9 +14,9 @@
     "static/media/chevron-droit.svg": "/yannlobjois_11_16022022/static/media/chevron-droit.8d9545cb18f67cea4ffddb888aa4dcb0.svg",
     "static/media/star-empty.svg": "/yannlobjois_11_16022022/static/media/star-empty.7e4ba6032d7d80ecc30aa389973cef95.svg",
     "static/media/star-full.svg": "/yannlobjois_11_16022022/static/media/star-full.6430150c126a3adf92c132c52c9c7428.svg",
-    "main.6c60d2b8.js.map": "/yannlobjois_11_16022022/static/js/main.6c60d2b8.js.map"
+    "main.7a88b19e.js.map": "/yannlobjois_11_16022022/static/js/main.7a88b19e.js.map"
   },
   "entrypoints": [
-    "static/js/main.6c60d2b8.js"
+    "static/js/main.7a88b19e.js"
   ]
 }
